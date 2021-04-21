@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +13,44 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// //Route that sends back a view
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+// //Route to users - string
+// Route::get('/users', function () {
+//     return 'Welcome to The Users Page';
+// });
+
+// //Route to users - array(JSON)
+// Route::get('/users', function () {
+//     return['PHP', 'HTML', 'Laravel'];
+// });
+
+// //Route to users - JSON object
+// Route::get('/users', function () {
+//     return response()->json([
+//         'name' => 'Sari',
+//         'course' => 'Laravel Beginner To Advanced'
+//     ]);
+// });
+
+// //Route to users - function
+// Route::get('/users', function () {
+//     return redirect('/');
+// });
+// //firstproject.com == /
+// //fisrtproject.com/users == /users
+
 Route::get('/', function () {
-    return env('DB_DATABASE');
+    return view('home');
 });
+
+//Laravel 8 (New)
+Route::get('/products', [ProductController::class, 'index']);
+Route::get('/products/about', [ProductController::class, 'about']);
+
+//Laravel 8 (Also New)
+Route::get('/products', 'App\Http\Controllers\ProductController@index');
+
