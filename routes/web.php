@@ -54,3 +54,12 @@ Route::get('/products/about', [ProductController::class, 'about']);
 //Laravel 8 (Also New)
 Route::get('/products', 'App\Http\Controllers\ProductController@index');
 
+// /products = all products
+// /products/productName
+// /products/productId
+
+//Pattern is integer
+//Route::get('/products/{id}', [ProductController::class, 'show']) -> where ('id', '[0-9]+');
+
+//Pattern is integer
+Route::get('/products/{name}', [ProductController::class, 'show']) -> where ('name', '[a-zA-Z]+');

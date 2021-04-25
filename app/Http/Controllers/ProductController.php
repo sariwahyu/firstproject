@@ -34,4 +34,16 @@ class ProductController extends Controller
     {
         return 'About Us Page';
     }
-}
+
+    public function show($name)
+    {
+        $data = [
+            'iphone' => 'Iphone',
+            'samsung' => 'Samsung'
+        ];
+
+        return view('products.index', [
+            'products' => $data[$name] ?? 'Products ' . $name . ' does not exist'
+        ]); 
+    }
+} 
