@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PagesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,16 +43,16 @@ use App\Http\Controllers\ProductController;
 // //firstproject.com == /
 // //fisrtproject.com/users == /users
 
-Route::get('/', function () {
-    return view('home');
-});
+// Route::get('/', function () {
+//     return view('home');
+// });
 
 //Laravel 8 (New)
-Route::get('/products', [ProductController::class, 'index']);
-Route::get('/products/about', [ProductController::class, 'about']);
+// Route::get('/products', [ProductController::class, 'index']);
+// Route::get('/products/about', [ProductController::class, 'about']);
 
 //Laravel 8 (Also New)
-Route::get('/products', 'App\Http\Controllers\ProductController@index');
+// Route::get('/products', 'App\Http\Controllers\ProductController@index');
 
 // /products = all products
 // /products/productName
@@ -61,5 +61,14 @@ Route::get('/products', 'App\Http\Controllers\ProductController@index');
 //Pattern is integer
 //Route::get('/products/{id}', [ProductController::class, 'show']) -> where ('id', '[0-9]+');
 
-//Pattern is integer
-Route::get('/products/{name}', [ProductController::class, 'show']) -> where ('name', '[a-zA-Z]+');
+//Pattern is string
+// Route::get('/products/{name}/{id}',
+// [ProductController::class, 'show']) -> where ([
+//     'name' => '[a-zA-Z]+',
+//     'id' => '[0-9]+'
+//     ]);
+
+// Route::get('/products', [ProductController::class, 'index'])->name('products');
+
+Route::get('/', [PagesController::class, 'index']);
+Route::get('/about', [PagesController::class.'about']);
